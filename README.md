@@ -30,13 +30,6 @@
     <source src="ruta-del-audio.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio HTML5.
   </audio>
-
-  <div class="carta">
-    <h1>Para Thias 💌</h1>
-    <p>Hola Thias,</p>
-    <!-- más párrafos -->
-  </div>
-  
 </body>
 </html>
  <div class="carta">
