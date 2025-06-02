@@ -40,7 +40,7 @@
 
 Feliz cumpleaños, Thais.✨</p>
     <p>
-    <p>ATT,<br>💖 Maycol.i </p>
+    <p>ATT,💖 Maycol.i </p>
   </div>
 </body>
 </html>
