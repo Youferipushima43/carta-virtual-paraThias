@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Carta para Thias</title>
+  <title>Carta para Thaiss</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -33,8 +33,8 @@
 </body>
 </html>
  <div class="carta">
-    <h1>Para Thias 💌</h1>
-    <p>Hola Thias,</p>
+    <h1>Para Thais 💌</h1>
+    <p>Hola Thais,</p>
     <p>Hoy, 29 de agosto, no podía dejar pasar este día sin escribirte. Aunque la distancia —y quizás el silencio pero bueno—
 
 <p>Cumplís un año más de vida, y espero de corazón que llegue cargado de luz, salud, momentos que te llenen el alma y personas que te recuerden lo increíble que sos. Aunque ya no esté cerca, aunque nuestras palabras hayan dejado de cruzarse como antes, lo que fuiste y lo que significaste no se borra. Fuiste importante, lo sos, y lo serás de alguna forma siempre.</p>
