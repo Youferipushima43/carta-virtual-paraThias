@@ -2,7 +2,6 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carta para Thias</title>
   <style>
     body {
@@ -26,7 +25,21 @@
   </style>
 </head>
 <body>
+
+  <audio autoplay loop>
+    <source src="ruta-del-audio.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
   <div class="carta">
+    <h1>Para Thias 💌</h1>
+    <p>Hola Thias,</p>
+    <!-- más párrafos -->
+  </div>
+  
+</body>
+</html>
+ <div class="carta">
     <h1>Para Thias 💌</h1>
     <p>Hola Thias,</p>
     <p>Hoy, 29 de agosto, no podía dejar pasar este día sin escribirte. Aunque la distancia —y quizás el silencio pero bueno—
