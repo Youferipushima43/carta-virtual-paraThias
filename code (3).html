@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feliz Cumpleaños Kat - Carta de Amor</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: linear-gradient(135deg, #ffdde1, #ff9a9e);
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    color: #6e2a3a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px 40px;
+    overflow-x: hidden;
+  }
+
+  /* Fixed header container */
+  #header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(135deg, #bb2a41, #9b2034);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    transition: height 0.4s ease, padding 0.4s ease;
+  }
+
+  #header-container.collapsed {
+    height: 60px;
+    padding: 0 10px;
+  }
+
+  /* Header title */
+  #main-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 1px 1px 2px #5c1020;
+    user-select: none;
+    transition: font-size 0.4s ease;
+    white-space: nowrap;
+  }
+  #header-container.collapsed #main-title {
+    font-size: 2.2rem;
+  }
+
+  /* Content container to offset for fixed header */
+  #content-container {
+    margin-top: 90px;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #heart-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    cursor: pointer;
+    margin: 0 0 15px;
+  }
+
+  /* Heart shape */
+  #heart {
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle at 50% 40%, #ff5268, #b81e37);
+    clip-path: polygon(
+      50% 90%,
+      82% 65%,
+      92% 40%,
+      75% 20%,
+      50% 27%,
+      25% 20%,
+      8% 40%,
+      18% 65%
+    );
+    filter: drop-shadow(0 0 6px #f65178);
+    transition: transform 0.7s ease, opacity 0.7s ease;
+    user-select: none;
+    z-index: 2;
+    position: relative;
+  }
+
+  #heart.clicked {
+    transform: scale(0.4) translateY(-220px);
+    opacity: 0;
+  }
+
+  /* Falling hearts */
+  #falling-hearts {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 240px;
+    height: 320px;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+  }
+
+  .falling-heart {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(circle at 50% 50%, #ff6382, #b91944);
+    clip-path: polygon(
+      50% 90%,
+      82% 65%,
+      92% 40%,
+      75% 20%,
+      50% 27%,
+      25% 20%,
+      8% 40%,
+      18% 65%
+    );
+    animation-name: fall-and-sway;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    filter: drop-shadow(0 0 3px #ff4b6a);
+    opacity: 0;
+  }
+
+  @keyframes fall-and-sway {
+    0% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(280px) translateX(var(--sway)) scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  /* Letter container */
+  #letter-container {
+    width: 100%;
+    max-width: 480px;
+    min-height: 380px;
+    background: #fff8f9;
+    border-radius: 20px;
+    box-shadow:
+      inset 0 0 15px #f2c4ca,
+      0 12px 30px rgba(219, 36, 60, 0.35);
+    padding: 35px 40px 30px;
+    font-family: 'Merriweather', serif;
+    color: #6e2a3a;
+    font-size: 1.24rem;
+    line-height: 1.75;
+    text-align: justify;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.75) translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    user-select: text;
+    z-index: 3;
+    margin-bottom: 30px;
+  }
+
+  #letter-container.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Letter heading */
+  #letter-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.2rem;
+    margin-bottom: 18px;
+    color: #bb2a41;
+    text-align: center;
+    user-select: none;
+    position: relative;
+  }
+
+  /* Decorative underline below heading */
+  #letter-title::after {
+    content: "";
+    display: block;
+    width: 110px;
+    height: 4px;
+    background: #bb2a41;
+    margin: 8px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 12px #bb2a41aa;
+  }
+
+  /* Buttons container below heart */
+  #buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    background: #bb2a41;
+    color: white;
+    box-shadow: 0 5px 15px rgba(187, 42, 65, 0.6);
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+
+  button:hover:not(:disabled) {
+    background: #9b2034;
+  }
+
+  button:disabled {
+    background: #d7a5ab;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Hide default audio controls for background music */
+  #background-music {
+    display: none;
+  }
+
+</style>
+</head>
+<body>
+
+<div id="header-container" aria-label="Encabezado principal">
+  <h1 id="main-title">Feliz Cumpleaños Kat 🎉💖</h1>
+</div>
+
+<div id="content-container">
+  <div id="heart-container" aria-label="Haz clic en el corazón para la sorpresa" role="button" tabindex="0">
+    <div id="heart"></div>
+    <div id="falling-hearts"></div>
+  </div>
+
+  <!-- Buttons outside the letter below the heart -->
+  <div id="buttons" aria-label="Controles para abrir y reiniciar la carta">
+    <button id="open-btn" aria-label="Abrir la carta">Abrir</button>
+    <button id="reset-btn" aria-label="Reiniciar la experiencia" disabled>Resetear</button>
+  </div>
+
+  <!-- Letter with the love message -->
+  <div id="letter-container" role="region" aria-live="polite" aria-label="Carta de amor">
+    <h2 id="letter-title">Querida Kat,</h2>
+    <p>
+      No estás recibiendo cualquier carta… estás recibiendo algo hecho solo para ti, con todo lo que siento, aunque no pueda decírtelo en persona.<br><br>
+      A veces la vida y la distancia no nos dejan estar donde quisiéramos, pero eso no cambia cuánto significás para mí.<br><br>
+      Hoy más que nunca, quería que supieras lo especial que sos y lo feliz que estoy de que existas.<br><br>
+      Feliz cumpleaños, que el universo te abrace fuerte por mí hoy…<br><br>
+      Y cuando por fin pueda verte, te daré ese abrazo que te debo, aunque llegue un poquito tarde, lo vas a recibir con todo mi corazón...
+    </p>
+  </div>
+</div>
+
+<!-- Background love music (royalty-free romantic instrumental) -->
+<audio id="background-music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_239642b9f9.mp3?filename=romantic-background-11830.mp3" type="audio/mpeg" />
+  Su música de fondo romántica.
+</audio>
+
+<script>
+  const heart = document.getElementById('heart');
+  const fallingHeartsContainer = document.getElementById('falling-hearts');
+  const letter = document.getElementById('letter-container');
+  const backgroundMusic = document.getElementById('background-music');
+  const mainTitle = document.getElementById('main-title');
+  const headerContainer = document.getElementById('header-container');
+
+  const openBtn = document.getElementById('open-btn');
+  const resetBtn = document.getElementById('reset-btn');
+
+  let animationDone = false;
+
+  function createFallingHearts() {
+    const heartsCount = 25;
+    const swayValues = ['-50px', '-35px', '-20px', '-10px', '0', '10px', '20px', '35px', '50px'];
+
+    for (let i = 0; i < heartsCount; i++) {
+      const fh = document.createElement('div');
+      fh.classList.add('falling-heart');
+
+      const xRange = 180 * (1 - i / heartsCount);
+      const xOffset = (Math.random() - 0.5) * xRange;
+      const yOffset = -30 * i;
+      fh.style.left = `calc(50% + ${xOffset}px)`;
+      fh.style.top = `${yOffset}px`;
+
+      fh.style.setProperty('--sway', swayValues[i % swayValues.length]);
+      fh.style.animationDuration = `${4 + Math.random() * 3}s`;
+      fh.style.animationDelay = `${i * 0.2}s`;
+
+      fallingHeartsContainer.appendChild(fh);
+
+      fh.addEventListener('animationend', () => {
+        fh.remove();
+      });
+    }
+  }
+
+  function openExperience() {
+    if(animationDone) return;
+    animationDone = true;
+
+    heart.classList.add('clicked');
+
+    createFallingHearts();
+
+    // Collapse and reduce header font size to become a title up top
+    headerContainer.classList.add('collapsed');
+
+    setTimeout(() => {
+      letter.classList.add('visible');
+    }, 700);
+
+    backgroundMusic.volume = 0.3;
+    backgroundMusic.play();
+
+    openBtn.disabled = true;
+    resetBtn.disabled = false;
+  }
+
+  function resetExperience() {
+    if(!animationDone) return;
+    animationDone = false;
+
+    heart.classList.remove('clicked');
+
+    letter.classList.remove('visible');
+
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
+
+    while (fallingHeartsContainer.firstChild) {
+      fallingHeartsContainer.firstChild.remove();
+    }
+
+    // Restore header to original size
+    headerContainer.classList.remove('collapsed');
+
+    openBtn.disabled = false;
+    resetBtn.disabled = true;
+  }
+
+  openBtn.addEventListener('click', openExperience);
+  resetBtn.addEventListener('click', resetExperience);
+
+  document.getElementById('heart-container').addEventListener('click', openExperience);
+
+  document.getElementById('heart-container').addEventListener('keydown', e => {
+    if ((e.key === "Enter" || e.key === " ") && !animationDone) {
+      e.preventDefault();
+      openExperience();
+    }
+  });
+</script>
+
+</body>
+</html>
+
