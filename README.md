@@ -251,7 +251,7 @@
   </style>
 </head>
 <body>
-  <div class="main-title">UN MENSAJE ESPECIAL PARA TI</div>
+  <div class="main-title"></div>
   <!-- MODAL DE CONTRASEÑA CON CALCULADORA -->
   <div id="passwordModal" class="modal">
     <form class="modal-content" onsubmit="event.preventDefault(); checkPassword();">
