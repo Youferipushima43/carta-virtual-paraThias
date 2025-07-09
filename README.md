@@ -29,12 +29,11 @@
                     <div class="letter">
                         <div class="paper-texture"></div>
                         <div class="letter-content">
-                            <h2>Hola Thais</h2>
-                            <p>Hoy, 29 de agosto, no podía dejar pasar este día sin escribirte.</p>
-                            <p>Aunque la distancia —y quizás el silencio—, cumplís un año más de vida,</p>
-                            <p>y espero de corazón que llegue cargado de luz, salud y momentos que te llenen el alma.</p>
-                            <p>Fuiste importante, lo sos, y lo serás de alguna forma siempre.</p>
-                            <div class="signature">Feliz cumpleaños, Thais.✨<br>ATT, Maycol.i🌹</div>
+                            <h2>Mi Amor</h2>
+                            <p>Eres la luz de mis días</p>
+                            <p>y la razón de mi sonrisa.</p>
+                            <p>Contigo todo es mejor.</p>
+                            <div class="signature">Te amo</div>
                         </div>
                     </div>
                     <i class="fas fa-heart" style="color: #ff4081; font-size: 2.5rem; animation: pulse 1.5s infinite; position: absolute; bottom: 10px; right: 10px;"></i>
@@ -47,21 +46,21 @@
         <div class="close-btn" id="close-btn">×</div>
         <div class="paper-texture"></div>
         <div class="fullscreen-letter-content">
-            <h2>PARA TI, THAIS</h2>
-            <p>Hoy, 29 de agosto, no podía dejar pasar este día sin escribirte.</p>
-            <p>Aunque la distancia —y quizás el silencio—</p>
-            <p>cumplís un año más de vida, y espero de corazón</p>
-            <p>que llegue cargado de luz, salud, momentos que te llenen el alma</p>
-            <p>y personas que te recuerden lo increíble que sos.</p>
-            <p>Aunque ya no esté cerca, lo que fuiste y lo que significaste no se borra.</p>
-            <p>Fuiste importante, lo sos, y lo serás de alguna forma siempre.</p>
-            <p>Te deseo lo mejor de lo mejor, no solo hoy, sino cada día.</p>
-            <p>Gracias por haber sido parte de mi vida y por todo lo que dejaste en mí.</p>
-            <p>Desde lejos, te mando un abrazo silencioso pero real, deseando que seas feliz, sinceramente.</p>
-            <div class="signature">Feliz cumpleaños, Thais.✨<br>ATT, Maycol.i🌹</div>
+            <h2>MI PRINCESA</h2>
+            <p>Eres la luz que ilumina mis días</p>
+            <p>y la razón de mi sonrisa eterna.</p>
+            <p>Contigo, cada momento es mágico</p>
+            <p>y mi corazón late más fuerte.</p>
+            <p>Tu presencia transforma lo ordinario en extraordinario,</p>
+            <p>y cada instante a tu lado es un tesoro que atesoro.</p>
+            <p>Tu sonrisa es mi alegría, tu mirada mi refugio,</p>
+            <p>y tu amor, el motor que impulsa mis sueños.</p>
+            <p>Te amo más de lo que las palabras pueden expresar.</p>
+            <div class="signature">Para siempre, Tu Novio</div>
         </div>
     </div>
 
+    
 </body>
 <script src="./js/script.js"></script>
 </html>
