@@ -224,8 +224,8 @@
   <!-- Carta visible solo al poner la contraseña -->
   <div id="mainContainer" class="container" style="display:none;">
     <div class="header">
-      <h1><i class="fa-solid fa-envelope-open-heart"></i>  .....  Para Thais</h1>
-      <p> ...              Un mensaje especial, solo para ti 💌</p>
+      <h1><i class="fa-solid fa-envelope-open-heart"></i>  .................  Para Thais</h1>
+      <p> ...........            Un mensaje especial, solo para ti 💌</p>
     </div>
 
     <div id="music-section" class="music-section">
@@ -233,8 +233,8 @@
     </div>
 
     <section class="message-section">
-      <h2><i class="fas fa-heart"></i>Para Thais
-Un mensaje único - desde el corazón 💌</h2>
+      <h2><i class="fas fa-heart"></i>..... Para Thais
+....... Un mensaje único - desde el corazón 💌</h2>
       <div class="message-content">
         <p>Hola Thais,</p>
         <p>
