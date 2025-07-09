@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Carta para Thaiss</title>
+  <title> Carta para Thaiss</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
@@ -224,8 +224,8 @@
   <!-- Carta visible solo al poner la contraseña -->
   <div id="mainContainer" class="container" style="display:none;">
     <div class="header">
-      <h1><i class="fa-solid fa-envelope-open-heart"></i> Para Thais</h1>
-      <p>Un mensaje especial, solo para ti 💌</p>
+      <h1><i class="fa-solid fa-envelope-open-heart"></i>  .....  Para Thais</h1>
+      <p> ...              Un mensaje especial, solo para ti 💌</p>
     </div>
 
     <div id="music-section" class="music-section">
