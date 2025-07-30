@@ -1,216 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Para Thais 💌</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Thais</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: black;
-      color: white;
-      height: 100%;
+      color: pink;
+      text-align: center;
       overflow: hidden;
     }
-
-    .matrix-hearts canvas {
+    h1 {
+      margin-top: 20px;
+      font-size: 2.2em;
+    }
+    .container {
+      display: none;
+      padding: 20px;
+    }
+    .hearts {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: -1;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
-
-    .modal {
-      position: fixed;
-      z-index: 999;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: pink;
+      transform: rotate(45deg);
+      animation: fall linear infinite;
     }
-
-    .modal-content {
-      background: #fffbea;
-      border-radius: 25px;
-      padding: 34px 24px 24px 24px;
-      box-shadow: 0 8px 32px rgba(48, 26, 10, 0.23);
-      min-width: 320px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 2.5px solid #ffb980;
-      animation: popin .5s ease;
-      color: #e17055;
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: pink;
+      border-radius: 50%;
     }
-
-    @keyframes popin {
-      from {transform: scale(.7); opacity:0;}
-      to {transform: scale(1); opacity:1;}
+    .heart::before {
+      top: -7.5px;
+      left: 0;
     }
-
-    .modal-content h2 {
-      font-size: 1.2em;
-      margin-bottom: 20px;
+    .heart::after {
+      left: -7.5px;
+      top: 0;
     }
-
-    #passInput {
-      width: 120px;
-      font-size: 1.7em;
-      letter-spacing: 12px;
-      text-align: center;
-      border: none;
-      border-bottom: 2.5px solid #e17055;
-      background: transparent;
-      margin-bottom: 18px;
-      outline: none;
-      color: #e17055;
-      font-weight: bold;
-      padding: 6px 0;
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(45deg);
+      }
     }
-
-    .calc-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
+    .pin-pad {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 2;
+    }
+    .pin-display {
+      background: #000;
+      color: pink;
+      font-size: 1.5em;
+      padding: 10px;
       margin-bottom: 10px;
+      letter-spacing: 10px;
     }
-
-    .calc-btn {
-      width: 48px;
-      height: 48px;
+    .pin-buttons button {
+      width: 60px;
+      height: 60px;
+      font-size: 1.2em;
+      margin: 5px;
+      background: pink;
       border: none;
-      border-radius: 13px;
-      background: linear-gradient(180deg, #ffd6b2 0%, #feb47b 100%);
-      color: #d35400;
-      font-size: 1.23em;
-      font-weight: bold;
+      border-radius: 50%;
+      color: black;
       cursor: pointer;
     }
-
-    .calc-btn:active {
-      transform: scale(0.97);
+    .rose-img {
+      width: 100px;
+      margin: 20px auto;
+      display: block;
     }
-
-    .calc-btn.special {
-      background: linear-gradient(180deg, #fff0f0 0%, #f8bfbf 100%);
-      color: #e17055;
-    }
-
-    #errorMsg {
-      color: #e74c3c;
-      font-size: 1em;
-      margin-top: 4px;
-      display: none;
-      font-weight: 500;
-      letter-spacing: .5px;
-    }
-
-    .card {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
-      overflow-y: auto;
-      max-height: 90vh;
-    }
-
-    .header {
-      text-align: center;
-    }
-
-    .header h1 {
-      font-size: 2em;
-      color: #ff9ecb;
-    }
-
-    .header p {
-      font-style: italic;
-      color: #ffd1dc;
-      margin-top: 0.5rem;
-    }
-
-    .music-section {
-      text-align: center;
-      margin: 1rem 0;
-    }
-
-    .music-section iframe {
-      width: 90%;
-      height: 60px;
-      border-radius: 12px;
-      border: none;
-    }
-
-    .message-content p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #ffd6e0;
-      margin-bottom: 1rem;
-      white-space: pre-line;
-    }
-
     .firma {
-      text-align: right;
-      font-size: 1.1rem;
-      color: #ff99c8;
-      margin-top: 2rem;
+      font-size: 1.2em;
+      margin-top: 30px;
+      font-weight: bold;
+    }
+    p {
+      white-space: pre-line;
+      padding: 0 20px;
+      font-size: 1.05em;
+    }
+    iframe {
+      border: none;
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
 
-<!-- Efecto Corazones -->
-<div class="matrix-hearts" id="matrixHearts"></div>
+<div class="hearts" id="hearts"></div>
 
-<!-- Modal de contraseña -->
-<div id="passwordModal" class="modal">
-  <form class="modal-content" onsubmit="event.preventDefault(); checkPassword();">
-    <h2>Ingresa la contraseña</h2>
-    <input type="password" id="passInput" maxlength="8" readonly autocomplete="off" />
-    <div class="calc-buttons">
-      <button type="button" class="calc-btn" onclick="addNumber('1')">1</button>
-      <button type="button" class="calc-btn" onclick="addNumber('2')">2</button>
-      <button type="button" class="calc-btn" onclick="addNumber('3')">3</button>
-      <button type="button" class="calc-btn" onclick="addNumber('4')">4</button>
-      <button type="button" class="calc-btn" onclick="addNumber('5')">5</button>
-      <button type="button" class="calc-btn" onclick="addNumber('6')">6</button>
-      <button type="button" class="calc-btn" onclick="addNumber('7')">7</button>
-      <button type="button" class="calc-btn" onclick="addNumber('8')">8</button>
-      <button type="button" class="calc-btn" onclick="addNumber('9')">9</button>
-      <button type="button" class="calc-btn special" onclick="clearInput()">Borrar</button>
-      <button type="button" class="calc-btn" onclick="addNumber('0')">0</button>
-      <button type="submit" class="calc-btn special">OK</button>
-    </div>
-    <p id="errorMsg">Contraseña incorrecta</p>
-  </form>
+<div class="pin-pad" id="pinPad">
+  <div class="pin-display" id="pinDisplay">----</div>
+  <div class="pin-buttons">
+    <button onclick="addNumber(1)">1</button>
+    <button onclick="addNumber(2)">2</button>
+    <button onclick="addNumber(3)">3</button><br/>
+    <button onclick="addNumber(4)">4</button>
+    <button onclick="addNumber(5)">5</button>
+    <button onclick="addNumber(6)">6</button><br/>
+    <button onclick="addNumber(7)">7</button>
+    <button onclick="addNumber(8)">8</button>
+    <button onclick="addNumber(9)">9</button><br/>
+    <button onclick="clearPin()">C</button>
+    <button onclick="addNumber(0)">0</button>
+    <button onclick="checkPin()">OK</button>
+  </div>
 </div>
 
-<!-- Carta oculta -->
-<div id="mainContainer" style="display:none;">
-  <div class="card">
-    <div class="header">
-      <h1>💌 Para Thais</h1>
-      <p>Un mensaje especial, solo para ti</p>
-    </div>
+<div class="container" id="content">
+  <h1>💌 Para Thais</h1>
+  <p>Un mensaje especial, solo para ti</p>
 
-    <div class="music-section">
-      <iframe src="https://archive.org/embed/anuel-aa-secreto-ft.-karol-g" allow="autoplay"></iframe>
-    </div>
+  <iframe style="border-radius:12px" 
+    src="https://open.spotify.com/embed/track/0r7CVbZTWZgbTCYdfa2P31?utm_source=generator" 
+    width="80%" height="80" allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"></iframe>
 
-    <div class="message-content">
-      <p>Hola Thais,</p>
-      <p>
+  <img src="https://i.imgur.com/yz0aFNB.png" alt="rosa" class="rose-img" />
+
+  <p>
+Hola Thais,
+
 Hoy, 29 de agosto, no quería dejar pasar el día sin decirte algo.
 No sé si este mensaje llegue a ti como una sorpresa, o como algo que esperabas sin esperarlo…
 
@@ -251,74 +187,55 @@ No espero respuesta. Solo quería que lo supieras.
 Ojalá este mensaje te abrace por dentro, te saque una sonrisa suave, o incluso una lágrima de esas que limpian el alma.
 
 Donde sea que estés… que la vida te trate bonito. Siempre.
-      </p>
-      <div class="firma">Feliz cumpleaños, Thais.✨<br>ATT, Maycol.i🌹</div>
-    </div>
-  </div>
+  </p>
+
+  <div class="firma">Feliz cumpleaños, Thais.✨<br>ATT, Maycol.i🌹</div>
 </div>
 
 <script>
-  const CORRECT_PASSWORD = "4334";
+  const correctPin = "4334";
+  let pin = "";
 
-  function addNumber(num) {
-    const input = document.getElementById('passInput');
-    if (input.value.length < input.maxLength) {
-      input.value += num;
+  function addNumber(n) {
+    if (pin.length < 4) {
+      pin += n;
+      updateDisplay();
     }
-    document.getElementById('errorMsg').style.display = 'none';
   }
 
-  function clearInput() {
-    document.getElementById('passInput').value = '';
-    document.getElementById('errorMsg').style.display = 'none';
+  function clearPin() {
+    pin = "";
+    updateDisplay();
   }
 
-  function checkPassword() {
-    const value = document.getElementById('passInput').value;
-    if (value === CORRECT_PASSWORD) {
-      document.getElementById('passwordModal').style.display = 'none';
-      document.getElementById('mainContainer').style.display = 'block';
+  function updateDisplay() {
+    document.getElementById("pinDisplay").textContent =
+      pin.padEnd(4, "-");
+  }
+
+  function checkPin() {
+    if (pin === correctPin) {
+      document.getElementById("pinPad").style.display = "none";
+      document.getElementById("content").style.display = "block";
     } else {
-      document.getElementById('errorMsg').style.display = 'block';
-      clearInput();
+      alert("Código incorrecto");
+      clearPin();
     }
   }
 
-  // Corazones animados
-  document.addEventListener('DOMContentLoaded', function () {
-    const canvas = document.createElement('canvas');
-    document.getElementById('matrixHearts').appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const hearts = "💗💖💕💘💝".split("");
-    const font_size = 18;
-    const columns = canvas.width / font_size;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#ff69b4";
-      ctx.font = font_size + "px monospace";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = hearts[Math.floor(Math.random() * hearts.length)];
-        ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-        if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-
-        drops[i]++;
-      }
+  function createHearts() {
+    const hearts = document.getElementById("hearts");
+    for (let i = 0; i < 50; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 5 + 3) + "s";
+      heart.style.top = "-" + (Math.random() * 20) + "px";
+      hearts.appendChild(heart);
     }
-
-    setInterval(draw, 70);
-  });
+  }
+  createHearts();
 </script>
 
 </body>
 </html>
-
